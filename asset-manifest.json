@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Cv2026andres/static/css/main.9a367ed3.css",
+    "main.js": "/Cv2026andres/static/js/main.984dddee.js",
+    "index.html": "/Cv2026andres/index.html",
+    "main.9a367ed3.css.map": "/Cv2026andres/static/css/main.9a367ed3.css.map",
+    "main.984dddee.js.map": "/Cv2026andres/static/js/main.984dddee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9a367ed3.css",
+    "static/js/main.984dddee.js"
+  ]
+}
