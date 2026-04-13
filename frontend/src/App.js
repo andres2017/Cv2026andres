@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import { Toaster } from "sonner";
 import HomePage from "./pages/HomePage";
@@ -8,11 +8,11 @@ import HomePage from "./pages/HomePage";
 function App() {
   return (
     <LanguageProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <Toaster
         position="bottom-right"
         toastOptions={{

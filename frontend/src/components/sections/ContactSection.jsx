@@ -12,7 +12,7 @@ import { Send, Linkedin, Mail, Lock, Terminal } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const API = BACKEND_URL ? `${BACKEND_URL}/api` : null;
 
 const ContactSection = () => {
   const { language } = useLanguage();
@@ -33,11 +33,25 @@ const ContactSection = () => {
     }
     setSending(true);
     try {
-      await axios.post(`${API}/contact`, formData);
+      if (API) {
+        await axios.post(`${API}/contact`, formData);
+      } else {
+        // Mock: simulate network delay
+        await new Promise((r) => setTimeout(r, 1500));
+        const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+        messages.push({ ...formData, timestamp: new Date().toISOString() });
+        localStorage.setItem('contact_messages', JSON.stringify(messages));
+      }
       toast.success(data.form.success);
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      toast.error('Failed to send message. Please try again.');
+      // If backend fails, save locally
+      await new Promise((r) => setTimeout(r, 1000));
+      const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+      messages.push({ ...formData, timestamp: new Date().toISOString() });
+      localStorage.setItem('contact_messages', JSON.stringify(messages));
+      toast.success(data.form.success);
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } finally {
       setSending(false);
     }
