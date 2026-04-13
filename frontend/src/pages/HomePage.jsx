@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import WhatsAppButton from '../components/layout/WhatsAppButton';
 import MatrixRain from '../components/effects/MatrixRain';
 import HeroSection from '../components/sections/HeroSection';
 import AboutSection from '../components/sections/AboutSection';
@@ -25,6 +26,7 @@ const HomePage = () => {
         <ContactSection />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

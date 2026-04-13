@@ -182,8 +182,10 @@ const portfolioData = {
     },
     footer: {
       copyright: "© 2025 Andrés Vargas Robles. All rights reserved.",
-      tagline: "Securing the digital frontier, one system at a time.",
-      builtWith: "Built with"
+      tagline: "Securing the digital frontier, one system at a time."
+    },
+    whatsapp: {
+      message: "Hello Andrés, we reviewed your profile and would like to contact you regarding a work opportunity with our team."
     }
   },
   es: {
@@ -369,8 +371,10 @@ const portfolioData = {
     },
     footer: {
       copyright: "© 2025 Andrés Vargas Robles. Todos los derechos reservados.",
-      tagline: "Asegurando la frontera digital, un sistema a la vez.",
-      builtWith: "Construido con"
+      tagline: "Asegurando la frontera digital, un sistema a la vez."
+    },
+    whatsapp: {
+      message: "Hola Andrés, revisamos tu perfil y nos gustaría contactarte respecto a una oportunidad laboral con nuestro equipo."
     }
   }
 };

@@ -6,6 +6,10 @@ import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { toast } from 'sonner';
 import { Upload, FileText, CheckCircle, Trash2, Shield } from 'lucide-react';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const CVUploadSection = () => {
   const { language } = useLanguage();
@@ -18,17 +22,15 @@ const CVUploadSection = () => {
   const [uploadComplete, setUploadComplete] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [terminalOutput, setTerminalOutput] = useState([]);
+  const [uploadedCvId, setUploadedCvId] = useState(null);
 
-  const validTypes = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  ];
+  const validExtensions = ['.pdf', '.doc', '.docx'];
   const maxSize = 10 * 1024 * 1024;
 
   const handleFile = useCallback(
-    (selectedFile) => {
-      if (!validTypes.includes(selectedFile.type)) {
+    async (selectedFile) => {
+      const ext = selectedFile.name.toLowerCase().slice(selectedFile.name.lastIndexOf('.'));
+      if (!validExtensions.includes(ext)) {
         toast.error('Invalid file type. Please upload PDF or DOC/DOCX.');
         return;
       }
@@ -38,40 +40,46 @@ const CVUploadSection = () => {
       }
       setFile(selectedFile);
       setUploadComplete(false);
-      setTerminalOutput([]);
-
-      // Mock upload with terminal output
+      setTerminalOutput(['Initializing secure connection...']);
       setUploading(true);
-      setProgress(0);
+      setProgress(10);
 
-      const steps = [
-        { at: 0, msg: 'Initializing secure connection...' },
-        { at: 20, msg: 'Encrypting file with AES-256...' },
-        { at: 50, msg: 'Uploading encrypted payload...' },
-        { at: 80, msg: 'Verifying file integrity...' }
-      ];
-      let prog = 0;
-      const interval = setInterval(() => {
-        prog += Math.random() * 12 + 4;
-        if (prog >= 100) {
-          prog = 100;
-          clearInterval(interval);
-          setUploading(false);
-          setUploadComplete(true);
-          setProgress(100);
-          setTerminalOutput((prev) => [...prev, 'Upload complete. File secured.']);
-          toast.success(data.success);
-        } else {
-          setProgress(Math.min(prog, 99));
-          const step = steps.find((s) => prog >= s.at && prog < s.at + 14);
-          if (step) {
-            setTerminalOutput((prev) => {
-              if (!prev.includes(step.msg)) return [...prev, step.msg];
-              return prev;
-            });
-          }
-        }
-      }, 180);
+      try {
+        setTerminalOutput((prev) => [...prev, 'Encrypting file with AES-256...']);
+        setProgress(30);
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        setTerminalOutput((prev) => [...prev, 'Uploading encrypted payload...']);
+
+        const response = await axios.post(`${API}/cv/upload`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          onUploadProgress: (progressEvent) => {
+            const percent = Math.round((progressEvent.loaded * 60) / progressEvent.total) + 30;
+            setProgress(Math.min(percent, 90));
+          },
+        });
+
+        setTerminalOutput((prev) => [...prev, 'Verifying file integrity...']);
+        setProgress(95);
+
+        // Small delay for UX
+        await new Promise((r) => setTimeout(r, 500));
+
+        setProgress(100);
+        setUploading(false);
+        setUploadComplete(true);
+        setUploadedCvId(response.data.id);
+        setTerminalOutput((prev) => [...prev, 'Upload complete. File secured.']);
+        toast.success(data.success);
+      } catch (err) {
+        setUploading(false);
+        setProgress(0);
+        const errorMsg = err.response?.data?.detail || 'Upload failed. Please try again.';
+        setTerminalOutput((prev) => [...prev, `ERROR: ${errorMsg}`]);
+        toast.error(errorMsg);
+      }
     },
     [data.success]
   );
@@ -86,11 +94,20 @@ const CVUploadSection = () => {
     [handleFile]
   );
 
-  const handleRemove = () => {
+  const handleRemove = async () => {
+    if (uploadedCvId) {
+      try {
+        await axios.delete(`${API}/cv/${uploadedCvId}`);
+      } catch (err) {
+        // Silent fail on delete
+      }
+    }
     setFile(null);
     setUploadComplete(false);
     setProgress(0);
     setTerminalOutput([]);
+    setUploadedCvId(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const formatSize = (bytes) => {
@@ -183,7 +200,7 @@ const CVUploadSection = () => {
                         width: `${progress}%`,
                         background: 'linear-gradient(90deg, #00ff41, #00d4ff)',
                         boxShadow: '0 0 8px rgba(0, 255, 65, 0.3)',
-                        transition: 'width 0.2s ease'
+                        transition: 'width 0.3s ease',
                       }}
                     />
                   </div>
@@ -195,7 +212,7 @@ const CVUploadSection = () => {
                 <div className="bg-[#0a0a0f] rounded p-3 font-mono text-xs text-[#8b949e] space-y-1">
                   {terminalOutput.map((line, i) => (
                     <p key={i}>
-                      <span className="text-[#00ff41]">$</span> {line}
+                      <span className={line.startsWith('ERROR') ? 'text-[#ff5f57]' : 'text-[#00ff41]'}>$</span> {line}
                     </p>
                   ))}
                 </div>
@@ -205,7 +222,7 @@ const CVUploadSection = () => {
                 <div className="bg-[#0a0a0f] rounded p-3 font-mono text-xs space-y-1">
                   <p className="text-[#00ff41]">✓ {data.success}</p>
                   <p className="text-[#8b949e] break-all">
-                    SHA-256: {Array.from({ length: 8 }, () => Math.random().toString(16).substr(2, 8)).join('')}
+                    ID: {uploadedCvId}
                   </p>
                 </div>
               )}
@@ -222,7 +239,14 @@ const CVUploadSection = () => {
                 </Button>
                 {uploadComplete && (
                   <Button
-                    onClick={handleRemove}
+                    onClick={() => {
+                      setFile(null);
+                      setUploadComplete(false);
+                      setProgress(0);
+                      setTerminalOutput([]);
+                      setUploadedCvId(null);
+                      if (fileInputRef.current) fileInputRef.current.value = '';
+                    }}
                     className="font-mono text-sm bg-transparent border border-[#00ff41]/50 text-[#00ff41] hover:bg-[#00ff41]/10 gap-2"
                   >
                     <Upload className="w-4 h-4" />

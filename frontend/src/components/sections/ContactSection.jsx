@@ -9,6 +9,10 @@ import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import { toast } from 'sonner';
 import { Send, Linkedin, Mail, Lock, Terminal } from 'lucide-react';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const ContactSection = () => {
   const { language } = useLanguage();
@@ -21,22 +25,22 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       toast.error('Please fill in all required fields.');
       return;
     }
     setSending(true);
-    // Mock send
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await axios.post(`${API}/contact`, formData);
       toast.success(data.form.success);
-      const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-      messages.push({ ...formData, timestamp: new Date().toISOString() });
-      localStorage.setItem('contact_messages', JSON.stringify(messages));
       setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
+    } catch (err) {
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   return (

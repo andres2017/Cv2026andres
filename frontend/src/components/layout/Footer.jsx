@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import portfolioData from '../../data/mock';
-import { Shield, Heart, Terminal } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
 const Footer = () => {
   const { language } = useLanguage();
@@ -14,9 +14,6 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-[#00ff41]" />
             <span className="font-mono text-sm text-[#8b949e]">{data.copyright}</span>
-          </div>
-          <div className="font-mono text-xs text-[#8b949e]/50 flex items-center gap-1">
-            {data.builtWith} <Heart className="w-3 h-3 text-[#00ff41]" /> & <Terminal className="w-3 h-3 text-[#00ff41]" />
           </div>
         </div>
         <div className="text-center mt-4">
