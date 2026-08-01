@@ -8,11 +8,11 @@ import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
 import { Label } from '../ui/label';
 import { toast } from 'sonner';
-import { Send, Linkedin, Mail, Lock, Terminal } from 'lucide-react';
-import axios from 'axios';
+import { Send, Linkedin, Mail, Github, Lock, Terminal } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = BACKEND_URL ? `${BACKEND_URL}/api` : null;
+// 1. Crea cuenta gratis en https://formspree.io
+// 2. Crea un form y reemplaza YOUR_FORM_ID con el ID real (ej: xzbkqjyw)
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 const ContactSection = () => {
   const { language } = useLanguage();
@@ -28,28 +28,51 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Please fill in all required fields.');
+      toast.error(language === 'es' ? 'Completa los campos obligatorios.' : 'Please fill in all required fields.');
       return;
     }
+
     setSending(true);
+
+    // Si aún no configuraste Formspree, usamos mailto como respaldo seguro
+    const isFormspreeReady = !FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID');
+
     try {
-      if (API) {
-        await axios.post(`${API}/contact`, formData);
+      if (isFormspreeReady) {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || 'Contacto desde portfolio AVR',
+            message: formData.message,
+          }),
+        });
+        if (!res.ok) throw new Error('Formspree error');
+        toast.success(data.form.success);
+        setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        // Mock: simulate network delay
-        await new Promise((r) => setTimeout(r, 1500));
-        const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-        messages.push({ ...formData, timestamp: new Date().toISOString() });
-        localStorage.setItem('contact_messages', JSON.stringify(messages));
+        // Fallback: abre el cliente de correo del usuario
+        const subject = encodeURIComponent(formData.subject || 'Contacto desde portfolio AVR');
+        const body = encodeURIComponent(
+          `Nombre: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+        );
+        window.location.href = `mailto:andresvargasrobles@gmail.com?subject=${subject}&body=${body}`;
+        toast.success(
+          language === 'es'
+            ? 'Se abrió tu correo. También puedes escribirme por WhatsApp.'
+            : 'Your email client opened. You can also reach me on WhatsApp.'
+        );
+        setFormData({ name: '', email: '', subject: '', message: '' });
       }
-      toast.success(data.form.success);
-      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      // If backend fails, save locally
-      await new Promise((r) => setTimeout(r, 1000));
-      const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
-      messages.push({ ...formData, timestamp: new Date().toISOString() });
-      localStorage.setItem('contact_messages', JSON.stringify(messages));
+      // Último recurso: mailto
+      const subject = encodeURIComponent(formData.subject || 'Contacto portfolio');
+      const body = encodeURIComponent(
+        `Nombre: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      );
+      window.location.href = `mailto:andresvargasrobles@gmail.com?subject=${subject}&body=${body}`;
       toast.success(data.form.success);
       setFormData({ name: '', email: '', subject: '', message: '' });
     } finally {
@@ -60,7 +83,6 @@ const ContactSection = () => {
   return (
     <section id="contact" className="relative z-10 py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117]/30">
       <div ref={ref} className="max-w-4xl mx-auto">
-        {/* Header */}
         <div
           className={`mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -78,7 +100,6 @@ const ContactSection = () => {
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          {/* Form */}
           <Card className="md:col-span-2 bg-[#0d1117]/60 border-[#1e2a3a] p-5 sm:p-6">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -145,7 +166,6 @@ const ContactSection = () => {
             </form>
           </Card>
 
-          {/* Social / Info */}
           <div className="space-y-4">
             <Card className="bg-[#0d1117]/60 border-[#1e2a3a] p-5">
               <h3 className="font-mono text-sm font-bold text-[#00ff41] mb-4">{data.social.title}</h3>
@@ -160,7 +180,16 @@ const ContactSection = () => {
                   <span className="font-mono text-sm text-[#c9d1d9]">LinkedIn</span>
                 </a>
                 <a
-                  href="mailto:contact@andresvargas.dev"
+                  href={data.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded bg-[#161b22] border border-[#1e2a3a] hover:border-[#00ff41]/30 transition-colors duration-300 group"
+                >
+                  <Github className="w-5 h-5 text-[#8b949e] group-hover:text-[#00ff41] transition-colors duration-300" />
+                  <span className="font-mono text-sm text-[#c9d1d9]">GitHub</span>
+                </a>
+                <a
+                  href={data.social.email}
                   className="flex items-center gap-3 p-3 rounded bg-[#161b22] border border-[#1e2a3a] hover:border-[#00ff41]/30 transition-colors duration-300 group"
                 >
                   <Mail className="w-5 h-5 text-[#8b949e] group-hover:text-[#00ff41] transition-colors duration-300" />
@@ -169,7 +198,6 @@ const ContactSection = () => {
               </div>
             </Card>
 
-            {/* Terminal Info Card */}
             <Card className="bg-[#0d1117]/60 border-[#1e2a3a] p-5">
               <div className="font-mono text-xs space-y-2">
                 <div className="flex items-center gap-2 text-[#8b949e]">
@@ -181,13 +209,7 @@ const ContactSection = () => {
                 <div className="flex items-center gap-2 text-[#8b949e]">
                   <Lock className="w-3 h-3 text-[#00ff41]" />
                   <span>
-                    Encryption: <span className="text-[#00ff41]">E2E</span>
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-[#8b949e]">
-                  <Mail className="w-3 h-3 text-[#00ff41]" />
-                  <span>
-                    Response: <span className="text-[#00d4ff]">{'< 24h'}</span>
+                    Response: <span className="text-[#00d4ff]">&lt; 24h</span>
                   </span>
                 </div>
               </div>

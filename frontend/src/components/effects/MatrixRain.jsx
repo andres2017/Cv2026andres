@@ -1,9 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const MatrixRain = () => {
   const canvasRef = useRef(null);
+  const [enabled, setEnabled] = useState(true);
 
   useEffect(() => {
+    // Desactivar en pantallas pequeñas o si el usuario prefiere menos movimiento
+    const mq = window.matchMedia('(max-width: 768px), (prefers-reduced-motion: reduce)');
+    const update = () => setEnabled(!mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -12,12 +24,15 @@ const MatrixRain = () => {
     const fontSize = 13;
     let columns;
     let drops;
+    let animationId;
 
     const init = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       columns = Math.floor(canvas.width / fontSize);
-      drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * -50));
+      drops = Array(columns)
+        .fill(0)
+        .map(() => Math.floor(Math.random() * -50));
     };
 
     init();
@@ -46,24 +61,32 @@ const MatrixRain = () => {
         }
         drops[i]++;
       }
+
+      animationId = requestAnimationFrame(() => {
+        // ~15 fps para ahorrar batería en laptops
+        setTimeout(draw, 65);
+      });
     };
 
-    const intervalId = setInterval(draw, 65);
+    draw();
 
     const handleResize = () => init();
     window.addEventListener('resize', handleResize);
 
     return () => {
-      clearInterval(intervalId);
+      cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [enabled]);
+
+  if (!enabled) return null;
 
   return (
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none"
       style={{ zIndex: 0 }}
+      aria-hidden="true"
     />
   );
 };

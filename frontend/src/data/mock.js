@@ -6,8 +6,9 @@ const portfolioData = {
         { label: "About", href: "#about" },
         { label: "Skills", href: "#skills" },
         { label: "Experience", href: "#experience" },
+        { label: "Projects", href: "#projects" },
         { label: "Education", href: "#education" },
-        { label: "Upload CV", href: "#cv-upload" },
+        { label: "Download CV", href: "#cv-download" },
         { label: "Contact", href: "#contact" }
       ]
     },
@@ -25,7 +26,7 @@ const portfolioData = {
     about: {
       title: "// About Me",
       subtitle: "root@andres:~$ cat about.txt",
-      bio: "Systems Engineer with over nine years of experience at INPEC. My career is focused on information security, systems and network administration. My continuous training in cybersecurity, blockchain, and software development allows me to apply advanced and cutting-edge technical solutions. Currently actively seeking remote work opportunities where I can contribute my technical skills and continue growing in the technology sector.",
+      bio: "Systems Engineer with over nine years of experience at INPEC protecting critical government infrastructure. Focused on information security, systems and network administration. Continuous training in cybersecurity, blockchain and software development lets me deliver modern technical solutions. Actively seeking remote opportunities where I can contribute and keep growing in tech.",
       stats: [
         { value: "9+", label: "Years Experience" },
         { value: "6+", label: "Certifications" },
@@ -93,16 +94,51 @@ const portfolioData = {
       items: [
         {
           role: "Systems Engineer",
-          company: "INPEC",
+          company: "INPEC (National Penitentiary and Prison Institute)",
           period: "2015 – Present",
           duration: "9+ years",
-          description: "Leading information security, systems and network administration for critical government infrastructure. Implementing advanced cybersecurity protocols and managing secure IT environments.",
+          description: "Responsible for information security and IT infrastructure of critical government facilities. Design, implement and maintain secure networks, harden systems and respond to security incidents across multiple sites.",
           highlights: [
-            "Information Security Management",
-            "Network & Systems Administration",
-            "Critical Infrastructure Protection",
-            "Security Protocol Implementation"
+            "Information Security Management (ISO 27001 aligned)",
+            "Network & Systems Administration for critical infrastructure",
+            "Incident response and vulnerability management",
+            "Security protocol design and continuous hardening",
+            "Support and training for technical teams"
           ]
+        }
+      ]
+    },
+    projects: {
+      title: "// Projects",
+      subtitle: "root@andres:~$ ls -la projects/",
+      items: [
+        {
+          name: "EcoStay",
+          description: "Glamping platform with blockchain airdrop. Frontend + backend + smart contracts for bookings and token rewards.",
+          tech: ["TypeScript", "React", "Blockchain", "Smart Contracts"],
+          link: "https://github.com/andres2017/airdrop_front",
+          repo: "airdrop_front / airdrop_back"
+        },
+        {
+          name: "AgroDirecto & AgroRiego",
+          description: "Agricultural solutions: direct marketplace and intelligent irrigation system focused on Colombian producers.",
+          tech: ["Python", "IoT", "Web"],
+          link: "https://github.com/andres2017/AgroDirecto",
+          repo: "AgroDirecto / AgroRiego-Inteligente"
+        },
+        {
+          name: "PetHealthRegistry",
+          description: "Smart contract and dApp to track pet health records and help recover lost animals on-chain.",
+          tech: ["JavaScript", "Smart Contracts", "Web3"],
+          link: "https://github.com/andres2017/PetHealthRegistry",
+          repo: "PetHealthRegistry"
+        },
+        {
+          name: "Blockchain MetaMask Demo",
+          description: "Simple React + Vite app that connects to MetaMask and shows account balance clearly.",
+          tech: ["React", "Vite", "MetaMask", "Web3"],
+          link: "https://github.com/andres2017/Blockchain_test_MetaMask",
+          repo: "Blockchain_test_MetaMask"
         }
       ]
     },
@@ -151,37 +187,33 @@ const portfolioData = {
         { title: "Programming & Webmaster (800h)", issuer: "UPB / MinTIC", date: "Dec 2022", category: "Development" }
       ]
     },
-    cvUpload: {
-      title: "// Upload CV",
-      subtitle: "root@andres:~$ upload --secure resume.pdf",
-      description: "Securely upload your CV in PDF or DOCX format. Your file is encrypted during transfer.",
-      dragText: "Drag & drop your CV here",
-      orText: "or",
-      browseText: "Browse Files",
-      supportedFormats: "Supported: PDF, DOC, DOCX (Max 10MB)",
-      uploading: "Encrypting and uploading...",
-      success: "File uploaded successfully!",
-      remove: "Remove",
-      uploadAnother: "Upload Another"
+    cvDownload: {
+      title: "// Download CV",
+      subtitle: "root@andres:~$ wget resume.pdf",
+      description: "Download my updated CV in PDF format. Ready for recruiters and opportunities.",
+      button: "Download CV (PDF)",
+      note: "Updated 2026 · English & Spanish available on request"
     },
     contact: {
       title: "// Contact",
       subtitle: "root@andres:~$ ./send_message.sh",
-      description: "Ready to discuss cybersecurity, blockchain, or tech opportunities? Send me a secure message.",
+      description: "Ready to discuss cybersecurity, blockchain or remote opportunities? Send a message or contact me directly on WhatsApp / LinkedIn.",
       form: {
         name: "Name", email: "Email", subject: "Subject", message: "Message",
-        send: "Send Secure Message", sending: "Encrypting & Sending...",
-        success: "Message sent successfully!",
+        send: "Send Message", sending: "Sending...",
+        success: "Message sent successfully! I will reply soon.",
         namePlaceholder: "John Doe", emailPlaceholder: "john@example.com",
-        subjectPlaceholder: "Cybersecurity Consultation", messagePlaceholder: "Your message here..."
+        subjectPlaceholder: "Cybersecurity opportunity", messagePlaceholder: "Your message here..."
       },
       social: {
         title: "Connect",
-        linkedin: "https://www.linkedin.com/in/andres-vargas-robles-68185b181"
+        linkedin: "https://www.linkedin.com/in/andres-vargas-robles-68185b181",
+        github: "https://github.com/andres2017",
+        email: "mailto:andresvargasrobles@gmail.com"
       }
     },
     footer: {
-      copyright: "© 2025 Andrés Vargas Robles. All rights reserved.",
+      copyright: "© 2026 Andrés Vargas Robles. All rights reserved.",
       tagline: "Securing the digital frontier, one system at a time."
     },
     whatsapp: {
@@ -195,8 +227,9 @@ const portfolioData = {
         { label: "Acerca", href: "#about" },
         { label: "Habilidades", href: "#skills" },
         { label: "Experiencia", href: "#experience" },
+        { label: "Proyectos", href: "#projects" },
         { label: "Educación", href: "#education" },
-        { label: "Subir CV", href: "#cv-upload" },
+        { label: "Descargar CV", href: "#cv-download" },
         { label: "Contacto", href: "#contact" }
       ]
     },
@@ -214,7 +247,7 @@ const portfolioData = {
     about: {
       title: "// Sobre Mí",
       subtitle: "root@andres:~$ cat acerca.txt",
-      bio: "Ingeniero de Sistemas con más de nueve años de experiencia en INPEC. Mi trayectoria se centra en la seguridad de la información, administración de sistemas y redes. Mi formación continua en ciberseguridad, blockchain y desarrollo de software me permite aplicar soluciones técnicas avanzadas y de vanguardia. Actualmente estoy en búsqueda activa de oportunidades laborales remotas donde pueda aportar mis habilidades técnicas y seguir creciendo en el sector de la tecnología.",
+      bio: "Ingeniero de Sistemas con más de nueve años de experiencia en el INPEC protegiendo infraestructura gubernamental crítica. Enfocado en seguridad de la información, administración de sistemas y redes. Formación continua en ciberseguridad, blockchain y desarrollo de software. Busco oportunidades remotas donde pueda aportar y seguir creciendo en tecnología.",
       stats: [
         { value: "9+", label: "Años Experiencia" },
         { value: "6+", label: "Certificaciones" },
@@ -282,16 +315,51 @@ const portfolioData = {
       items: [
         {
           role: "Ingeniero de Sistemas",
-          company: "INPEC",
+          company: "INPEC (Instituto Nacional Penitenciario y Carcelario)",
           period: "2015 – Presente",
           duration: "9+ años",
-          description: "Liderando seguridad de la información, administración de sistemas y redes para infraestructura gubernamental crítica. Implementando protocolos avanzados de ciberseguridad y gestionando entornos IT seguros.",
+          description: "Responsable de la seguridad de la información e infraestructura TI de instalaciones gubernamentales críticas. Diseño, implementación y mantenimiento de redes seguras, hardening de sistemas y respuesta a incidentes de seguridad en múltiples sedes.",
           highlights: [
-            "Gestión de Seguridad de la Información",
-            "Administración de Redes y Sistemas",
-            "Protección de Infraestructura Crítica",
-            "Implementación de Protocolos de Seguridad"
+            "Gestión de Seguridad de la Información (alineado a ISO 27001)",
+            "Administración de redes y sistemas de infraestructura crítica",
+            "Respuesta a incidentes y gestión de vulnerabilidades",
+            "Diseño de protocolos de seguridad y hardening continuo",
+            "Soporte y capacitación a equipos técnicos"
           ]
+        }
+      ]
+    },
+    projects: {
+      title: "// Proyectos",
+      subtitle: "root@andres:~$ ls -la proyectos/",
+      items: [
+        {
+          name: "EcoStay",
+          description: "Plataforma de glamping con airdrop blockchain. Frontend + backend + contratos inteligentes para reservas y recompensas en tokens.",
+          tech: ["TypeScript", "React", "Blockchain", "Smart Contracts"],
+          link: "https://github.com/andres2017/airdrop_front",
+          repo: "airdrop_front / airdrop_back"
+        },
+        {
+          name: "AgroDirecto & AgroRiego",
+          description: "Soluciones agro: marketplace directo y riego inteligente orientado a productores colombianos.",
+          tech: ["Python", "IoT", "Web"],
+          link: "https://github.com/andres2017/AgroDirecto",
+          repo: "AgroDirecto / AgroRiego-Inteligente"
+        },
+        {
+          name: "PetHealthRegistry",
+          description: "Contrato inteligente y dApp para llevar registro de salud de mascotas y ayudar a recuperar animales perdidos on-chain.",
+          tech: ["JavaScript", "Smart Contracts", "Web3"],
+          link: "https://github.com/andres2017/PetHealthRegistry",
+          repo: "PetHealthRegistry"
+        },
+        {
+          name: "Blockchain MetaMask Demo",
+          description: "App sencilla React + Vite que se conecta a MetaMask y muestra el balance de la cuenta de forma clara.",
+          tech: ["React", "Vite", "MetaMask", "Web3"],
+          link: "https://github.com/andres2017/Blockchain_test_MetaMask",
+          repo: "Blockchain_test_MetaMask"
         }
       ]
     },
@@ -340,37 +408,33 @@ const portfolioData = {
         { title: "Programación y Webmaster (800h)", issuer: "UPB / MinTIC", date: "Dic 2022", category: "Desarrollo" }
       ]
     },
-    cvUpload: {
-      title: "// Subir CV",
-      subtitle: "root@andres:~$ upload --seguro curriculum.pdf",
-      description: "Sube tu CV de forma segura en formato PDF o DOCX. Tu archivo se encripta durante la transferencia.",
-      dragText: "Arrastra y suelta tu CV aquí",
-      orText: "o",
-      browseText: "Explorar Archivos",
-      supportedFormats: "Soportado: PDF, DOC, DOCX (Máx 10MB)",
-      uploading: "Encriptando y subiendo...",
-      success: "¡Archivo subido exitosamente!",
-      remove: "Eliminar",
-      uploadAnother: "Subir Otro"
+    cvDownload: {
+      title: "// Descargar CV",
+      subtitle: "root@andres:~$ wget curriculum.pdf",
+      description: "Descarga mi CV actualizado en formato PDF. Listo para reclutadores y oportunidades.",
+      button: "Descargar CV (PDF)",
+      note: "Actualizado 2026 · Disponible en español e inglés bajo solicitud"
     },
     contact: {
       title: "// Contacto",
       subtitle: "root@andres:~$ ./enviar_mensaje.sh",
-      description: "¿Listo para hablar de ciberseguridad, blockchain u oportunidades tecnológicas? Envíame un mensaje seguro.",
+      description: "¿Listo para hablar de ciberseguridad, blockchain u oportunidades remotas? Envía un mensaje o contáctame directo por WhatsApp / LinkedIn.",
       form: {
         name: "Nombre", email: "Correo", subject: "Asunto", message: "Mensaje",
-        send: "Enviar Mensaje Seguro", sending: "Encriptando y Enviando...",
-        success: "¡Mensaje enviado exitosamente!",
+        send: "Enviar Mensaje", sending: "Enviando...",
+        success: "¡Mensaje enviado! Te responderé pronto.",
         namePlaceholder: "Juan Pérez", emailPlaceholder: "juan@ejemplo.com",
-        subjectPlaceholder: "Consulta de Ciberseguridad", messagePlaceholder: "Tu mensaje aquí..."
+        subjectPlaceholder: "Oportunidad de ciberseguridad", messagePlaceholder: "Tu mensaje aquí..."
       },
       social: {
         title: "Conectar",
-        linkedin: "https://www.linkedin.com/in/andres-vargas-robles-68185b181"
+        linkedin: "https://www.linkedin.com/in/andres-vargas-robles-68185b181",
+        github: "https://github.com/andres2017",
+        email: "mailto:andresvargasrobles@gmail.com"
       }
     },
     footer: {
-      copyright: "© 2025 Andrés Vargas Robles. Todos los derechos reservados.",
+      copyright: "© 2026 Andrés Vargas Robles. Todos los derechos reservados.",
       tagline: "Asegurando la frontera digital, un sistema a la vez."
     },
     whatsapp: {

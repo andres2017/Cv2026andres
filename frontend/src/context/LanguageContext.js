@@ -3,10 +3,11 @@ import React, { createContext, useContext, useState } from 'react';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  // Por defecto español (mercado colombiano)
+  const [language, setLanguage] = useState('es');
 
   const toggleLanguage = () => {
-    setLanguage(prev => (prev === 'en' ? 'es' : 'en'));
+    setLanguage((prev) => (prev === 'en' ? 'es' : 'en'));
   };
 
   return (
