@@ -7,12 +7,14 @@ import { Button } from '../ui/button';
 import { Download, FileText, Shield, ExternalLink } from 'lucide-react';
 import { toast } from 'sonner';
 
-// CV embebido (base64) — descarga siempre funciona sin depender de public/
-const CV_PDF_BASE64 = "JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUgo+PgplbmRvYmoKMiAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjEgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iagozIDAgb2JqCjw8Ci9CYXNlRm9udCAvSGVsdmV0aWNhLUJvbGQgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YyIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKNCAwIG9iago8PAovQ29udGVudHMgOCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA3IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago1IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgNyAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjYgMCBvYmoKPDwKL0F1dGhvciAoXChhbm9ueW1vdXNcKSkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MDgwMTA1NTQ1NSswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MDgwMTA1NTQ1NSswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoXChhbm9ueW1vdXNcKSkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9Db3VudCAxIC9LaWRzIFsgNCAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0ZpbHRlciBbIC9BU0NJSTg1RGVjb2RlIC9GbGF0ZURlY29kZSBdIC9MZW5ndGggMjU2Ngo+PgpzdHJlYW0KR2F1MEVnTiZjUyY6TzpTb01gb2M8QThXbVhhTztuOUEkTyQ3OGdlKz5DJTEnODBTN20lJXJqVnAiUkBhUTRoQlxOYWU+LDVRZkpgcVhiTDM8O2I6aHMqYkMnP2MoPnEiJjRSNCJ1Szc1QDxpPFdqaSpQb1hdZkZRTUlEcC0hS05wKlxuWDlOKytDPmpRSjFZVlU+I0QmaStHajlIOGI5WyJbNWgiRy88QFxcOlk6Ji5YJzFeaz9rZVpfdGhJJVpqIzZyb0NxWVNrMHM+JkJebGsoVDQuUGJmYCoycTRza3BEKjY8KitQOUcrdCUuWDZuVU4vUjYnXGhuckVFYmxgKlJpRzU1aHU/XiVQJlFyRy4wPHU2TlI4bGNdc2gkJkxtNFY0QzZmczszWDNwYyJWPGBGOyZwUk1HbTk2Si1MdE0pc0EpSCdOIVhRJTkjRUM7Tz8jYjdlbS5EV0IrPjZwXTQjVEBdO1omMW1WMC9cTGBvaVVdWiRnOl0tSmRDKW4ucUxyRi9aV2clSHRBIVNvcjlUanFUQ2VzaGxBPVRiSFJmMFhSOEppbT9NcmZoNVIuI3A/MzU6VzdGXUVNRD00XmwkN2Z0RFlUcSxVQTo4PUFXPVJbJUFySSs0MjEkN3BYUDRKI1hiYXR0PltiXGliI1NuZDBYVzlWJTEkXWxKVlV0SShGOl45IWJcIVhHZlhsVD0mX2g7M2M/Uy9fYl8yRk9MKF4sZ1hkOi9jNkhZX1NnRU9qXilPJTYpb1JLPSdpM09dUEgvW3EyTDxFSz8hY2FBaCY+Ri5NZy5bKF5MPTonKSIudUMtYSw+RFYxMkowOVJUL3FISkJxcU49bVJLJzlQVStPQGlDIiRucUwsTlE2KSwjOjhCdWlhXFdnUGo9RFgncF5OazcmbVUxPiQxXVQjL3M6X2Zob2dmV20pKHVsbTthMnAvNFwpS1lfXi5VP3NmLE5FNGdLKXBQZjwjZjAoX1NxTTIzX1wzXl9kaUtGJSEiXC1VZ0k0PUElcHEzLUcvYEVvXSZhaz82NzZodWg+RERca0Y6IVJWLCJbZzt";
 const CV_FILENAME = 'CV-Andres-Vargas-Robles.pdf';
 
-function blobFromBase64() {
-  const binary = atob(CV_PDF_BASE64);
+async function getCvBlob() {
+  const base = process.env.PUBLIC_URL || '';
+  const res = await fetch(`${base}/cv.b64.txt`);
+  if (!res.ok) throw new Error('missing');
+  const b64 = (await res.text()).trim();
+  const binary = atob(b64);
   const bytes = new Uint8Array(binary.length);
   for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
   return new Blob([bytes], { type: 'application/pdf' });
@@ -24,10 +26,10 @@ const CVUploadSection = () => {
   const [ref, isVisible] = useScrollReveal();
   const [loading, setLoading] = useState(false);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     setLoading(true);
     try {
-      const blob = blobFromBase64();
+      const blob = await getCvBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -38,19 +40,19 @@ const CVUploadSection = () => {
       URL.revokeObjectURL(url);
       toast.success(language === 'es' ? 'CV descargado' : 'CV downloaded');
     } catch (e) {
-      toast.error(language === 'es' ? 'Error al descargar' : 'Download error');
+      toast.error(language === 'es' ? 'Error al descargar el CV' : 'Error downloading CV');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleView = () => {
+  const handleView = async () => {
     try {
-      const blob = blobFromBase64();
+      const blob = await getCvBlob();
       const url = URL.createObjectURL(blob);
       window.open(url, '_blank', 'noopener');
     } catch {
-      toast.error(language === 'es' ? 'Error al abrir' : 'Open error');
+      toast.error(language === 'es' ? 'Error al abrir el CV' : 'Error opening CV');
     }
   };
 
