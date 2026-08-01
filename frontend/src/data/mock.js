@@ -14,11 +14,11 @@ const portfolioData = {
     hero: {
       terminalLines: [
         { prompt: "$ whoami", response: "andres_vargas_robles" },
-        { prompt: "$ cat mission.txt", response: "Build · Automate · Launch · Scale" },
+        { prompt: "$ cat mission.txt", response: "Dream · Build · Ship · Scale" },
         { prompt: "$ ls ventures/", response: "fiestita/  slimdownpdf/  anvora/  punto-tricolor/  agro/" },
         { prompt: "$ ./offer", response: "Claude · Skills · Agents · n8n · Custom software" }
       ],
-      subtitle: "Entrepreneur · AI Builder · Claude · Skills · Agents · n8n Automations · Projects built for your business",
+      subtitle: "Entrepreneur & dreamer from Colombia · Trained in Claude at Ruta N Medellín · I build products and help companies adopt AI with real hunger to move forward",
       cta: "View services",
       ctaSecondary: "My ventures",
       scroll: "Scroll to discover"
@@ -26,9 +26,9 @@ const portfolioData = {
     services: {
       title: "// Services",
       subtitle: "root@avr:~$ ./sell_value.sh",
-      intro: "I help businesses and professionals work smarter with AI and automation. From Claude training to custom agents, n8n workflows and software built for your process — not generic templates.",
+      intro: "I help businesses and professionals work smarter with AI and automation. From Claude training (Ruta N Medellín) to custom agents, n8n workflows and software built for your process — not generic templates.",
       items: [
-        { icon: "Bot", title: "Claude training for teams", description: "Practical sessions so your team uses Claude every day: prompting, documents, analysis and real workflows. Online or on-site.", highlights: ["Beginner to advanced", "Your real use cases", "Follow-up support"] },
+        { icon: "Bot", title: "Claude training for teams", description: "Practical sessions so your team uses Claude every day: prompting, documents, analysis and real workflows. Online or on-site. Based on my Ruta N Medellín training.", highlights: ["Beginner to advanced", "Your real use cases", "Follow-up support"] },
         { icon: "Sparkles", title: "Custom Claude Skills", description: "Skills tailored to sales, support, operations, legal or tech teams. Designed, documented and handed over ready to use.", highlights: ["Process mapping", "Skill design", "Docs + training"] },
         { icon: "Cpu", title: "AI agents for your company", description: "Agents that answer, report, qualify leads or support operations — with clear control and security.", highlights: ["Discovery", "Design", "Secure delivery"] },
         { icon: "Workflow", title: "n8n automations", description: "Connect tools, cut repetitive work and move data automatically: WhatsApp, CRMs, sheets, email, APIs.", highlights: ["Process audit", "n8n flows", "Maintenance"] },
@@ -40,7 +40,7 @@ const portfolioData = {
     ventures: {
       title: "// Ventures",
       subtitle: "root@avr:~$ ls -la emprendimientos/",
-      intro: "I build companies and products. Dreamer by nature — operator by choice.",
+      intro: "I don't just talk about ideas — I ship them. Dreamer by nature, operator by choice. Every product is a step toward building something bigger.",
       items: [
         { name: "Fiestita", tag: "Live product", description: "Digital invitations platform for birthdays, weddings, quinceañeras and events. Music, photos, countdown, map and WhatsApp RSVP. One-time payment, ready instantly.", link: "https://invitacionesdigitalesfiestita.com", linkLabel: "invitacionesdigitalesfiestita.com" },
         { name: "SlimdownPDF", tag: "Live product", description: "Convert PDF, Word, Excel, PowerPoint, images and audio to clean Markdown in seconds. Native parsing and smart caching cut the tokens you spend with Claude, ChatGPT and other AI models.", link: "https://slimdownpdf.uk", linkLabel: "slimdownpdf.uk" },
@@ -53,16 +53,16 @@ const portfolioData = {
     about: {
       title: "// About",
       subtitle: "root@avr:~$ cat soñador.txt",
-      bio: "I am Andrés Vargas Robles — systems engineer, entrepreneur and builder. I create companies, digital products and AI solutions. Capacitado en Claude, skills and agents. I automate with n8n and deliver custom software for real businesses. I believe in shipping, learning and dreaming big while executing every day.",
+      bio: "I am Andrés Vargas Robles — systems engineer, entrepreneur and dreamer from Tunja, Colombia. I build companies and digital products because I believe execution beats excuses. This month I completed Claude training at Ruta N Medellín (skills, agents and practical AI workflows) and I apply that knowledge to help businesses and to grow my own ventures: Fiestita, SlimdownPDF, Anvora, Punto Tricolor and more. I automate with n8n, ship software for real clients and keep learning every day. I am hungry to move forward — for my projects, for the people I work with, and for the future I am building with my own hands.",
       stats: [
         { value: "6+", label: "Ventures" },
-        { value: "AI", label: "Claude · Skills · Agents" },
+        { value: "AI", label: "Claude · Ruta N" },
         { value: "n8n", label: "Automations" },
-        { value: "100%", label: "Remote ready" }
+        { value: "100%", label: "Drive to grow" }
       ],
       details: [
         { icon: "MapPin", label: "Base", value: "Tunja, Boyacá, Colombia" },
-        { icon: "Briefcase", label: "Focus", value: "AI · Automation · Products" },
+        { icon: "Briefcase", label: "Focus", value: "AI · Products · Automation" },
         { icon: "Rocket", label: "Identity", value: "Entrepreneur · Dreamer · Builder" },
         { icon: "Globe", label: "Mode", value: "Remote · LatAm & worldwide" }
       ]
@@ -75,7 +75,7 @@ const portfolioData = {
           { name: "Claude · Prompt engineering", level: 92 },
           { name: "Custom Skills", level: 90 },
           { name: "AI Agents", level: 88 },
-          { name: "Team training", level: 90 }
+          { name: "Team training (Ruta N)", level: 90 }
         ]},
         { name: "Automation", icon: "Workflow", items: [
           { name: "n8n workflows", level: 88 },
@@ -117,12 +117,14 @@ const portfolioData = {
       subtitle: "root@avr:~$ cat formacion.log",
       tabs: { education: "Education", certifications: "Certifications" },
       items: [
+        { title: "Claude AI · Skills & Agents", institution: "Ruta N Medellín", period: "Aug 2026", skills: ["Claude", "Skills", "Agents", "Prompting"] },
         { title: "Advanced Blockchain Bootcamp", institution: "CYMETRIA TALENTO TECH", period: "2024", skills: ["Smart Contracts", "dApps", "Web3"] },
         { title: "Cybersecurity Technician", institution: "INCIBE", period: "2023", skills: ["Systems", "Forensics", "Vulnerabilities"] },
         { title: "Webmaster / Full-Stack (800h)", institution: "UPB · MinTIC MisiónTIC", period: "2021–2022", skills: ["Python", "Java", "Web"] },
         { title: "Systems Engineering", institution: "UNAD", period: "2015–2019", skills: ["Systems design", "Infrastructure"] }
       ],
       certifications: [
+        { title: "Claude AI · Skills & Agents", issuer: "Ruta N Medellín", date: "2026", category: "AI" },
         { title: "Fortinet NSE 1, 2 & 3", issuer: "Fortinet", date: "2023", category: "Security" },
         { title: "Cybersecurity Technician", issuer: "INCIBE", date: "2023", category: "Security" },
         { title: "CCNA", issuer: "Cisco", date: "2019", category: "Networks" },
@@ -133,14 +135,14 @@ const portfolioData = {
     cvDownload: {
       title: "// Download CV",
       subtitle: "root@avr:~$ wget cv.pdf",
-      description: "Professional CV focused on AI services, automation and product building.",
+      description: "Professional CV — AI services, Claude (Ruta N), automation and product building.",
       button: "Download CV (PDF)",
-      note: "Updated 2026"
+      note: "Updated Aug 2026"
     },
     contact: {
       title: "// Contact",
       subtitle: "root@avr:~$ ./hablemos.sh",
-      description: "Need Claude training, a skill, an agent, an n8n automation or a custom project? Message me — discovery call is free.",
+      description: "Need Claude training, a skill, an agent, an n8n automation or a custom project? I reply fast — discovery call is free. Let's build something real.",
       form: {
         name: "Name", email: "Email", subject: "Subject", message: "Message",
         send: "Send message", sending: "Sending...",
@@ -159,10 +161,10 @@ const portfolioData = {
     },
     footer: {
       copyright: "© 2026 Andrés Vargas Robles · AVR. All rights reserved.",
-      tagline: "Build · Automate · Launch — entrepreneur at heart."
+      tagline: "Dream · Build · Ship — entrepreneur with fire to move forward."
     },
     whatsapp: {
-      message: "Hola Andrés, vi tus servicios (Claude / Skills / Agentes / n8n) y quiero hablar de un proyecto o automatización."
+      message: "Hola Andrés, vi tu portfolio (Claude / Ruta N / Skills / Agentes / n8n) y quiero hablar de un proyecto."
     }
   },
   es: {
@@ -180,11 +182,11 @@ const portfolioData = {
     hero: {
       terminalLines: [
         { prompt: "$ whoami", response: "andres_vargas_robles" },
-        { prompt: "$ cat mision.txt", response: "Crear · Automatizar · Lanzar · Escalar" },
+        { prompt: "$ cat mision.txt", response: "Soñar · Crear · Lanzar · Escalar" },
         { prompt: "$ ls emprendimientos/", response: "fiestita/  slimdownpdf/  anvora/  punto-tricolor/  agro/" },
         { prompt: "$ ./oferta", response: "Claude · Skills · Agentes · n8n · Software a medida" }
       ],
-      subtitle: "Emprendedor · Constructor de IA · Claude · Skills · Agentes · Automatizaciones n8n · Proyectos a tu medida",
+      subtitle: "Emprendedor y soñador de Colombia · Capacitado en Claude en Ruta N Medellín · Construyo productos y ayudo a empresas a adoptar IA, con ganas reales de salir adelante",
       cta: "Ver servicios",
       ctaSecondary: "Mis emprendimientos",
       scroll: "Desplázate para descubrir"
@@ -192,9 +194,9 @@ const portfolioData = {
     services: {
       title: "// Servicios",
       subtitle: "root@avr:~$ ./vender_valor.sh",
-      intro: "Ayudo a empresas y profesionales a trabajar mejor con IA y automatización. Desde capacitación en Claude hasta agentes, flujos n8n y software hecho para tu proceso — no plantillas genéricas.",
+      intro: "Ayudo a empresas y profesionales a trabajar mejor con IA y automatización. Desde capacitación en Claude (Ruta N Medellín) hasta agentes, flujos n8n y software hecho para tu proceso — no plantillas genéricas.",
       items: [
-        { icon: "Bot", title: "Capacitación en Claude", description: "Sesiones prácticas para que tu equipo use Claude a diario: prompting, documentos, análisis y flujos reales. Online o presencial.", highlights: ["De básico a avanzado", "Casos de tu negocio", "Acompañamiento"] },
+        { icon: "Bot", title: "Capacitación en Claude", description: "Sesiones prácticas para que tu equipo use Claude a diario: prompting, documentos, análisis y flujos reales. Online o presencial. Basado en mi formación en Ruta N Medellín.", highlights: ["De básico a avanzado", "Casos de tu negocio", "Acompañamiento"] },
         { icon: "Sparkles", title: "Skills de Claude a medida", description: "Skills para ventas, soporte, operaciones, legal o equipos técnicos. Diseñados, documentados y listos para usar.", highlights: ["Mapeo de procesos", "Diseño del skill", "Docs + entrenamiento"] },
         { icon: "Cpu", title: "Agentes de IA", description: "Agentes que responden, reportan, califican leads o apoyan operaciones — con control y seguridad claros.", highlights: ["Descubrimiento", "Diseño", "Entrega segura"] },
         { icon: "Workflow", title: "Automatizaciones con n8n", description: "Conecta herramientas y elimina trabajo repetitivo: WhatsApp, CRM, hojas de cálculo, correo y APIs.", highlights: ["Auditoría del proceso", "Flujos n8n", "Mantenimiento"] },
@@ -206,7 +208,7 @@ const portfolioData = {
     ventures: {
       title: "// Emprendimientos",
       subtitle: "root@avr:~$ ls -la empresas/",
-      intro: "Creo empresas y productos. Soñador de naturaleza — ejecutor por decisión.",
+      intro: "No solo hablo de ideas: las lanzo. Soñador de naturaleza, ejecutor por decisión. Cada producto es un paso hacia algo más grande.",
       items: [
         { name: "Fiestita", tag: "Producto en vivo", description: "Plataforma de invitaciones digitales para cumpleaños, bodas, quince años y eventos. Música, fotos, cuenta regresiva, mapa y confirmación por WhatsApp. Pago único, lista al instante.", link: "https://invitacionesdigitalesfiestita.com", linkLabel: "invitacionesdigitalesfiestita.com" },
         { name: "SlimdownPDF", tag: "Producto en vivo", description: "Convierte PDF, Word, Excel, PowerPoint, imágenes y audio a Markdown limpio en segundos. Parsing nativo y caché inteligente para gastar menos tokens con Claude, ChatGPT y otros modelos de IA.", link: "https://slimdownpdf.uk", linkLabel: "slimdownpdf.uk" },
@@ -219,16 +221,16 @@ const portfolioData = {
     about: {
       title: "// Sobre mí",
       subtitle: "root@avr:~$ cat soñador.txt",
-      bio: "Soy Andrés Vargas Robles — ingeniero de sistemas, emprendedor y constructor. Creo empresas, productos digitales y soluciones de IA. Capacitado en Claude, skills y agentes. Automatizo con n8n y entrego software a medida para negocios reales. Creo en lanzar, aprender y soñar en grande mientras ejecuto cada día.",
+      bio: "Soy Andrés Vargas Robles — ingeniero de sistemas, emprendedor y soñador de Tunja, Colombia. Creo empresas y productos digitales porque creo que ejecutar vale más que las excusas. Este mes completé la capacitación en Claude en Ruta N Medellín (skills, agentes y flujos prácticos de IA) y aplico ese conocimiento para ayudar a negocios y para hacer crecer mis propios proyectos: Fiestita, SlimdownPDF, Anvora, Punto Tricolor y más. Automatizo con n8n, entrego software a clientes reales y sigo aprendiendo cada día. Tengo ganas de salir adelante: por mis proyectos, por la gente con la que trabajo y por el futuro que estoy construyendo con mis propias manos.",
       stats: [
         { value: "6+", label: "Emprendimientos" },
-        { value: "IA", label: "Claude · Skills · Agentes" },
+        { value: "IA", label: "Claude · Ruta N" },
         { value: "n8n", label: "Automatizaciones" },
-        { value: "100%", label: "Listo remoto" }
+        { value: "100%", label: "Ganas de crecer" }
       ],
       details: [
         { icon: "MapPin", label: "Base", value: "Tunja, Boyacá, Colombia" },
-        { icon: "Briefcase", label: "Enfoque", value: "IA · Automatización · Productos" },
+        { icon: "Briefcase", label: "Enfoque", value: "IA · Productos · Automatización" },
         { icon: "Rocket", label: "Identidad", value: "Emprendedor · Soñador · Builder" },
         { icon: "Globe", label: "Modalidad", value: "Remoto · LatAm y mundial" }
       ]
@@ -241,7 +243,7 @@ const portfolioData = {
           { name: "Claude · Prompt engineering", level: 92 },
           { name: "Skills a medida", level: 90 },
           { name: "Agentes de IA", level: 88 },
-          { name: "Capacitación de equipos", level: 90 }
+          { name: "Capacitación (Ruta N)", level: 90 }
         ]},
         { name: "Automatización", icon: "Workflow", items: [
           { name: "Flujos n8n", level: 88 },
@@ -283,12 +285,14 @@ const portfolioData = {
       subtitle: "root@avr:~$ cat formacion.log",
       tabs: { education: "Educación", certifications: "Certificaciones" },
       items: [
+        { title: "Claude AI · Skills y Agentes", institution: "Ruta N Medellín", period: "Ago 2026", skills: ["Claude", "Skills", "Agentes", "Prompting"] },
         { title: "Bootcamp Blockchain Avanzado", institution: "CYMETRIA TALENTO TECH", period: "2024", skills: ["Smart Contracts", "dApps", "Web3"] },
         { title: "Técnico en Ciberseguridad", institution: "INCIBE", period: "2023", skills: ["Sistemas", "Forense", "Vulnerabilidades"] },
         { title: "Webmaster / Full-Stack (800h)", institution: "UPB · MinTIC MisiónTIC", period: "2021–2022", skills: ["Python", "Java", "Web"] },
         { title: "Ingeniería de Sistemas", institution: "UNAD", period: "2015–2019", skills: ["Diseño de sistemas", "Infraestructura"] }
       ],
       certifications: [
+        { title: "Claude AI · Skills y Agentes", issuer: "Ruta N Medellín", date: "2026", category: "IA" },
         { title: "Fortinet NSE 1, 2 & 3", issuer: "Fortinet", date: "2023", category: "Seguridad" },
         { title: "Técnico en Ciberseguridad", issuer: "INCIBE", date: "2023", category: "Seguridad" },
         { title: "CCNA", issuer: "Cisco", date: "2019", category: "Redes" },
@@ -299,14 +303,14 @@ const portfolioData = {
     cvDownload: {
       title: "// Descargar CV",
       subtitle: "root@avr:~$ wget cv.pdf",
-      description: "CV profesional enfocado en servicios de IA, automatización y construcción de productos.",
+      description: "CV profesional — servicios de IA, Claude (Ruta N), automatización y construcción de productos.",
       button: "Descargar CV (PDF)",
-      note: "Actualizado 2026"
+      note: "Actualizado ago 2026"
     },
     contact: {
       title: "// Contacto",
       subtitle: "root@avr:~$ ./hablemos.sh",
-      description: "¿Necesitas capacitación en Claude, un skill, un agente, una automatización n8n o un proyecto a medida? Escríbeme — la llamada de descubrimiento es gratis.",
+      description: "¿Necesitas capacitación en Claude, un skill, un agente, una automatización n8n o un proyecto a medida? Respondo rápido — la llamada de descubrimiento es gratis. Construyamos algo real.",
       form: {
         name: "Nombre", email: "Correo", subject: "Asunto", message: "Mensaje",
         send: "Enviar mensaje", sending: "Enviando...",
@@ -325,10 +329,10 @@ const portfolioData = {
     },
     footer: {
       copyright: "© 2026 Andrés Vargas Robles · AVR. Todos los derechos reservados.",
-      tagline: "Crear · Automatizar · Lanzar — emprendedor de corazón."
+      tagline: "Soñar · Crear · Lanzar — emprendedor con ganas de salir adelante."
     },
     whatsapp: {
-      message: "Hola Andrés, vi tus servicios (Claude / Skills / Agentes / n8n) y quiero hablar de un proyecto o automatización."
+      message: "Hola Andrés, vi tu portfolio (Claude / Ruta N / Skills / Agentes / n8n) y quiero hablar de un proyecto."
     }
   }
 };
