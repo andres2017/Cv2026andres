@@ -10,9 +10,8 @@ import { Label } from '../ui/label';
 import { toast } from 'sonner';
 import { Send, Linkedin, Mail, Github, Lock, Terminal } from 'lucide-react';
 
-// 1. Crea cuenta gratis en https://formspree.io
-// 2. Crea un form y reemplaza YOUR_FORM_ID con el ID real (ej: xzbkqjyw)
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+// Formspree endpoint — mensajes llegan a tu correo configurado en Formspree
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogjvnj';
 
 const ContactSection = () => {
   const { language } = useLanguage();
@@ -34,46 +33,35 @@ const ContactSection = () => {
 
     setSending(true);
 
-    // Si aún no configuraste Formspree, usamos mailto como respaldo seguro
-    const isFormspreeReady = !FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID');
-
     try {
-      if (isFormspreeReady) {
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            subject: formData.subject || 'Contacto desde portfolio AVR',
-            message: formData.message,
-          }),
-        });
-        if (!res.ok) throw new Error('Formspree error');
-        toast.success(data.form.success);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        // Fallback: abre el cliente de correo del usuario
-        const subject = encodeURIComponent(formData.subject || 'Contacto desde portfolio AVR');
-        const body = encodeURIComponent(
-          `Nombre: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-        );
-        window.location.href = `mailto:andresvargasrobles@gmail.com?subject=${subject}&body=${body}`;
-        toast.success(
-          language === 'es'
-            ? 'Se abrió tu correo. También puedes escribirme por WhatsApp.'
-            : 'Your email client opened. You can also reach me on WhatsApp.'
-        );
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      }
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Contacto desde portfolio AVR',
+          message: formData.message,
+          _replyto: formData.email,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Formspree error');
+
+      toast.success(data.form.success);
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
-      // Último recurso: mailto
-      const subject = encodeURIComponent(formData.subject || 'Contacto portfolio');
+      // Fallback: mailto si Formspree falla
+      const subject = encodeURIComponent(formData.subject || 'Contacto portfolio AVR');
       const body = encodeURIComponent(
         `Nombre: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
       );
       window.location.href = `mailto:andresvargasrobles@gmail.com?subject=${subject}&body=${body}`;
-      toast.success(data.form.success);
+      toast.success(
+        language === 'es'
+          ? 'Se abrió tu correo como respaldo. También puedes usar WhatsApp.'
+          : 'Opened email as fallback. You can also use WhatsApp.'
+      );
       setFormData({ name: '', email: '', subject: '', message: '' });
     } finally {
       setSending(false);
@@ -209,7 +197,7 @@ const ContactSection = () => {
                 <div className="flex items-center gap-2 text-[#8b949e]">
                   <Lock className="w-3 h-3 text-[#00ff41]" />
                   <span>
-                    Response: <span className="text-[#00d4ff]">&lt; 24h</span>
+                    Response: <span className="text-[#00d4ff]">< 24h</span>
                   </span>
                 </div>
               </div>
