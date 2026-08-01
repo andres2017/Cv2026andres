@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import WhatsAppButton from '../components/layout/WhatsAppButton';
-import MatrixRain from '../components/effects/MatrixRain';
+import Scene3D from '../components/effects/Scene3D';
 import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
 import VenturesSection from '../components/sections/VenturesSection';
@@ -16,7 +16,11 @@ import ContactSection from '../components/sections/ContactSection';
 const HomePage = () => {
   return (
     <div className="relative min-h-screen bg-[#0a0a0f]">
-      <MatrixRain />
+      {/* Three.js global background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Scene3D intensity="full" />
+      </div>
+
       <Navbar />
       <main className="relative z-10">
         <HeroSection />

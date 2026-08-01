@@ -40,17 +40,16 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-16 overflow-hidden">
-      {/* Glow orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-[#00ff41]/[0.07] blur-[100px] animate-pulse-slow" />
-        <div className="absolute bottom-10 -left-20 w-72 h-72 rounded-full bg-[#00d4ff]/[0.06] blur-[90px] animate-float" />
-        <div className="absolute top-1/3 -right-16 w-64 h-64 rounded-full bg-[#00ff41]/[0.05] blur-[80px] animate-float-delayed" />
-      </div>
+      {/* Soft vignette so text stays readable over 3D */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/40 via-transparent to-[#0a0a0f]/70"
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 max-w-5xl w-full text-center">
         {/* Badge */}
         <div
-          className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00ff41]/35 bg-[#00ff41]/10 font-mono text-xs text-[#00ff41] mb-8 transition-all duration-700 ${
+          className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00ff41]/35 bg-[#00ff41]/10 backdrop-blur-md font-mono text-xs text-[#00ff41] mb-8 transition-all duration-700 ${
             ready ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3'
           }`}
         >
@@ -68,7 +67,7 @@ const HeroSection = () => {
             ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <span className="text-[#f0f6fc]">Andrés Vargas</span>
+          <span className="text-[#f0f6fc] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">Andrés Vargas</span>
           <br className="sm:hidden" />
           <span className="bg-gradient-to-r from-[#00ff41] via-[#00d4ff] to-[#00ff41] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
             {' '}Robles
@@ -81,7 +80,7 @@ const HeroSection = () => {
             ready ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg border border-[#1e2a3a] bg-[#0d1117]/80 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg border border-[#1e2a3a] bg-[#0d1117]/80 backdrop-blur-md">
             {React.createElement(serviceIcons[activeTag % serviceIcons.length], {
               className: 'w-4 h-4 text-[#00ff41]',
             })}
@@ -116,7 +115,7 @@ const HeroSection = () => {
           <Button
             onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             variant="outline"
-            className="bg-transparent border border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10 hover:border-[#00ff41] font-mono px-8 py-6 rounded-lg text-sm gap-2 transition-all duration-300"
+            className="bg-[#0d1117]/50 backdrop-blur-sm border border-[#00ff41]/40 text-[#00ff41] hover:bg-[#00ff41]/10 hover:border-[#00ff41] font-mono px-8 py-6 rounded-lg text-sm gap-2 transition-all duration-300"
           >
             <MessageCircle className="w-4 h-4" />
             {language === 'es' ? 'Hablar ahora' : 'Talk now'}
@@ -137,7 +136,7 @@ const HeroSection = () => {
           ].map((stat, i) => (
             <div
               key={i}
-              className="rounded-xl border border-[#1e2a3a] bg-[#0d1117]/60 backdrop-blur-sm px-3 py-4 hover:border-[#00ff41]/30 hover:bg-[#00ff41]/[0.04] transition-all duration-300"
+              className="rounded-xl border border-[#1e2a3a] bg-[#0d1117]/70 backdrop-blur-md px-3 py-4 hover:border-[#00ff41]/30 hover:bg-[#00ff41]/[0.04] transition-all duration-300"
               style={{ transitionDelay: `${500 + i * 80}ms` }}
             >
               <div className="font-mono text-lg sm:text-xl font-bold text-[#00ff41]">{stat.value}</div>
