@@ -4,9 +4,9 @@ import portfolioData from '../../data/mock';
 import useScrollReveal from '../../hooks/useScrollReveal';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
-import { Bot, Sparkles, Cpu, Shield, Rocket, GraduationCap, ChevronRight, MessageCircle } from 'lucide-react';
+import { Bot, Sparkles, Cpu, Shield, Rocket, GraduationCap, ChevronRight, MessageCircle, Workflow } from 'lucide-react';
 
-const iconMap = { Bot, Sparkles, Cpu, Shield, Rocket, GraduationCap };
+const iconMap = { Bot, Sparkles, Cpu, Shield, Rocket, GraduationCap, Workflow };
 
 const ServicesSection = () => {
   const { language } = useLanguage();
@@ -20,7 +20,6 @@ const ServicesSection = () => {
   return (
     <section id="services" className="relative z-10 py-20 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div ref={ref} className="max-w-6xl mx-auto">
-        {/* Header */}
         <div
           className={`mb-10 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -34,7 +33,6 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div
           className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -68,7 +66,6 @@ const ServicesSection = () => {
           })}
         </div>
 
-        {/* CTA */}
         <div
           className={`mt-12 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
