@@ -197,7 +197,7 @@ const ContactSection = () => {
                 <div className="flex items-center gap-2 text-[#8b949e]">
                   <Lock className="w-3 h-3 text-[#00ff41]" />
                   <span>
-                    Response: <span className="text-[#00d4ff]">< 24h</span>
+                    Response: <span className="text-[#00d4ff]">{'< 24h'}</span>
                   </span>
                 </div>
               </div>
