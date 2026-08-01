@@ -33,20 +33,18 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div
-          className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '150ms' }}
-        >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {data.items.map((service, i) => {
             const Icon = iconMap[service.icon] || Sparkles;
             return (
               <Card
                 key={i}
-                className="bg-[#0d1117]/70 border-[#1e2a3a] p-5 sm:p-6 hover:border-[#00ff41]/40 transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,255,65,0.1)] group flex flex-col"
+                className={`card-lift bg-[#0d1117]/70 border-[#1e2a3a] p-5 sm:p-6 hover:border-[#00ff41]/40 group flex flex-col transition-all duration-500 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${120 + i * 80}ms` }}
               >
-                <div className="w-11 h-11 rounded-lg bg-[#00ff41]/10 border border-[#00ff41]/25 flex items-center justify-center mb-4 group-hover:bg-[#00ff41]/15 transition-colors">
+                <div className="w-11 h-11 rounded-lg bg-[#00ff41]/10 border border-[#00ff41]/25 flex items-center justify-center mb-4 group-hover:bg-[#00ff41]/20 group-hover:scale-110 transition-all duration-300">
                   <Icon className="w-5 h-5 text-[#00ff41]" />
                 </div>
                 <h3 className="font-mono text-base font-bold text-[#f0f6fc] mb-2 group-hover:text-[#00ff41] transition-colors">
@@ -70,11 +68,11 @@ const ServicesSection = () => {
           className={`mt-12 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
-          style={{ transitionDelay: '300ms' }}
+          style={{ transitionDelay: '500ms' }}
         >
           <Button
             onClick={scrollToContact}
-            className="bg-[#00ff41]/10 border border-[#00ff41]/50 text-[#00ff41] hover:bg-[#00ff41]/20 font-mono px-8 py-3 gap-2 hover:shadow-[0_0_25px_rgba(0,255,65,0.2)] transition-all"
+            className="bg-[#00ff41] text-[#0a0a0f] hover:bg-[#00ff41]/90 font-mono font-semibold px-8 py-3 gap-2 shadow-[0_0_25px_rgba(0,255,65,0.25)] hover:shadow-[0_0_35px_rgba(0,255,65,0.4)] transition-all"
           >
             <MessageCircle className="w-4 h-4" />
             {data.cta}
