@@ -5,10 +5,10 @@ import WhatsAppButton from '../components/layout/WhatsAppButton';
 import MatrixRain from '../components/effects/MatrixRain';
 import HeroSection from '../components/sections/HeroSection';
 import ServicesSection from '../components/sections/ServicesSection';
-import AboutSection from '../components/sections/AboutSection';
-import SkillsSection from '../components/sections/SkillsSection';
-import ExperienceSection from '../components/sections/ExperienceSection';
+import VenturesSection from '../components/sections/VenturesSection';
 import ProjectsSection from '../components/sections/ProjectsSection';
+import SkillsSection from '../components/sections/SkillsSection';
+import AboutSection from '../components/sections/AboutSection';
 import EducationSection from '../components/sections/EducationSection';
 import CVUploadSection from '../components/sections/CVUploadSection';
 import ContactSection from '../components/sections/ContactSection';
@@ -21,10 +21,10 @@ const HomePage = () => {
       <main className="relative z-10">
         <HeroSection />
         <ServicesSection />
-        <AboutSection />
-        <SkillsSection />
+        <VenturesSection />
         <ProjectsSection />
-        <ExperienceSection />
+        <SkillsSection />
+        <AboutSection />
         <EducationSection />
         <CVUploadSection />
         <ContactSection />
