@@ -15,7 +15,7 @@ const portfolioData = {
       terminalLines: [
         { prompt: "$ whoami", response: "andres_vargas_robles" },
         { prompt: "$ cat mission.txt", response: "Build · Automate · Launch · Scale" },
-        { prompt: "$ ls ventures/", response: "fiestita/  anvora/  punto-tricolor/  agro/  web3/" },
+        { prompt: "$ ls ventures/", response: "fiestita/  slimdownpdf/  anvora/  punto-tricolor/  agro/" },
         { prompt: "$ ./offer", response: "Claude · Skills · Agents · n8n · Custom software" }
       ],
       subtitle: "Entrepreneur · AI Builder · Claude · Skills · Agents · n8n Automations · Projects built for your business",
@@ -43,6 +43,7 @@ const portfolioData = {
       intro: "I build companies and products. Dreamer by nature — operator by choice.",
       items: [
         { name: "Fiestita", tag: "Live product", description: "Digital invitations platform for birthdays, weddings, quinceañeras and events. Music, photos, countdown, map and WhatsApp RSVP. One-time payment, ready instantly.", link: "https://invitacionesdigitalesfiestita.com", linkLabel: "invitacionesdigitalesfiestita.com" },
+        { name: "SlimdownPDF", tag: "Live product", description: "Convert PDF, Word, Excel, PowerPoint, images and audio to clean Markdown in seconds. Native parsing and smart caching cut the tokens you spend with Claude, ChatGPT and other AI models.", link: "https://slimdownpdf.uk", linkLabel: "slimdownpdf.uk" },
         { name: "Anvora", tag: "In progress", description: "Developer factory we are building: a space to train, ship and scale software talent and products with AI-native methods.", link: null, linkLabel: null },
         { name: "Punto Tricolor", tag: "APK in development", description: "App for Colombian businesses and fans: WhatsApp AI sales bots, local map and engagement around Mundial 2026. APK in active development.", link: "https://puntotricolor.co", linkLabel: "puntotricolor.co" },
         { name: "EcoStay", tag: "Web3", description: "Glamping platform with blockchain airdrop: bookings + smart contracts + token rewards.", link: "https://github.com/andres2017/airdrop_front", linkLabel: "GitHub" },
@@ -54,7 +55,7 @@ const portfolioData = {
       subtitle: "root@avr:~$ cat soñador.txt",
       bio: "I am Andrés Vargas Robles — systems engineer, entrepreneur and builder. I create companies, digital products and AI solutions. Capacitado en Claude, skills and agents. I automate with n8n and deliver custom software for real businesses. I believe in shipping, learning and dreaming big while executing every day.",
       stats: [
-        { value: "5+", label: "Ventures" },
+        { value: "6+", label: "Ventures" },
         { value: "AI", label: "Claude · Skills · Agents" },
         { value: "n8n", label: "Automations" },
         { value: "100%", label: "Remote ready" }
@@ -104,6 +105,7 @@ const portfolioData = {
       title: "// Projects",
       subtitle: "root@avr:~$ ls projects/",
       items: [
+        { name: "SlimdownPDF", description: "SaaS to convert PDF, Office, images and audio to clean Markdown — fewer tokens for Claude, ChatGPT and other LLMs.", tech: ["SaaS", "Markdown", "AI tooling"], link: "https://slimdownpdf.uk", repo: "Live product" },
         { name: "Fiestita", description: "Full digital invitations product: designs, music, RSVP via WhatsApp, countdown and maps.", tech: ["Product", "Web", "WhatsApp"], link: "https://invitacionesdigitalesfiestita.com", repo: "Live product" },
         { name: "Punto Tricolor", description: "APK + platform for businesses (WhatsApp AI bots) and fans around Mundial 2026.", tech: ["APK", "AI", "WhatsApp"], link: "https://puntotricolor.co", repo: "In development" },
         { name: "EcoStay", description: "Glamping + blockchain airdrop. Frontend, backend and smart contracts.", tech: ["TypeScript", "React", "Web3"], link: "https://github.com/andres2017/airdrop_front", repo: "airdrop_front" },
@@ -179,7 +181,7 @@ const portfolioData = {
       terminalLines: [
         { prompt: "$ whoami", response: "andres_vargas_robles" },
         { prompt: "$ cat mision.txt", response: "Crear · Automatizar · Lanzar · Escalar" },
-        { prompt: "$ ls emprendimientos/", response: "fiestita/  anvora/  punto-tricolor/  agro/  web3/" },
+        { prompt: "$ ls emprendimientos/", response: "fiestita/  slimdownpdf/  anvora/  punto-tricolor/  agro/" },
         { prompt: "$ ./oferta", response: "Claude · Skills · Agentes · n8n · Software a medida" }
       ],
       subtitle: "Emprendedor · Constructor de IA · Claude · Skills · Agentes · Automatizaciones n8n · Proyectos a tu medida",
@@ -207,6 +209,7 @@ const portfolioData = {
       intro: "Creo empresas y productos. Soñador de naturaleza — ejecutor por decisión.",
       items: [
         { name: "Fiestita", tag: "Producto en vivo", description: "Plataforma de invitaciones digitales para cumpleaños, bodas, quince años y eventos. Música, fotos, cuenta regresiva, mapa y confirmación por WhatsApp. Pago único, lista al instante.", link: "https://invitacionesdigitalesfiestita.com", linkLabel: "invitacionesdigitalesfiestita.com" },
+        { name: "SlimdownPDF", tag: "Producto en vivo", description: "Convierte PDF, Word, Excel, PowerPoint, imágenes y audio a Markdown limpio en segundos. Parsing nativo y caché inteligente para gastar menos tokens con Claude, ChatGPT y otros modelos de IA.", link: "https://slimdownpdf.uk", linkLabel: "slimdownpdf.uk" },
         { name: "Anvora", tag: "En construcción", description: "Fábrica de desarrolladores que estamos creando: espacio para formar, entregar y escalar talento y productos de software con métodos AI-native.", link: null, linkLabel: null },
         { name: "Punto Tricolor", tag: "APK en desarrollo", description: "App para negocios e hinchas: bots de IA en WhatsApp, mapa local y engagement alrededor del Mundial 2026. APK en desarrollo activo.", link: "https://puntotricolor.co", linkLabel: "puntotricolor.co" },
         { name: "EcoStay", tag: "Web3", description: "Plataforma de glamping con airdrop blockchain: reservas + contratos inteligentes + recompensas.", link: "https://github.com/andres2017/airdrop_front", linkLabel: "GitHub" },
@@ -218,7 +221,7 @@ const portfolioData = {
       subtitle: "root@avr:~$ cat soñador.txt",
       bio: "Soy Andrés Vargas Robles — ingeniero de sistemas, emprendedor y constructor. Creo empresas, productos digitales y soluciones de IA. Capacitado en Claude, skills y agentes. Automatizo con n8n y entrego software a medida para negocios reales. Creo en lanzar, aprender y soñar en grande mientras ejecuto cada día.",
       stats: [
-        { value: "5+", label: "Emprendimientos" },
+        { value: "6+", label: "Emprendimientos" },
         { value: "IA", label: "Claude · Skills · Agentes" },
         { value: "n8n", label: "Automatizaciones" },
         { value: "100%", label: "Listo remoto" }
@@ -268,6 +271,7 @@ const portfolioData = {
       title: "// Proyectos",
       subtitle: "root@avr:~$ ls proyectos/",
       items: [
+        { name: "SlimdownPDF", description: "SaaS para convertir PDF, Office, imágenes y audio a Markdown limpio — menos tokens para Claude, ChatGPT y otros LLMs.", tech: ["SaaS", "Markdown", "Herramienta IA"], link: "https://slimdownpdf.uk", repo: "Producto en vivo" },
         { name: "Fiestita", description: "Producto completo de invitaciones digitales: diseños, música, RSVP por WhatsApp, cuenta regresiva y mapas.", tech: ["Producto", "Web", "WhatsApp"], link: "https://invitacionesdigitalesfiestita.com", repo: "Producto en vivo" },
         { name: "Punto Tricolor", description: "APK + plataforma para negocios (bots IA en WhatsApp) e hinchas alrededor del Mundial 2026.", tech: ["APK", "IA", "WhatsApp"], link: "https://puntotricolor.co", repo: "En desarrollo" },
         { name: "EcoStay", description: "Glamping + airdrop blockchain. Frontend, backend y contratos inteligentes.", tech: ["TypeScript", "React", "Web3"], link: "https://github.com/andres2017/airdrop_front", repo: "airdrop_front" },
