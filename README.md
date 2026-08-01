@@ -1,75 +1,44 @@
-# AVR — Portfolio Ciberseguridad
+# AVR · Agencia de IA
 
-Portfolio profesional de **Andrés Vargas Robles**  
-Ingeniero de Sistemas · Ciberseguridad · Blockchain
+**Andrés Vargas Robles**  
+Agencia de IA · Claude · Skills · Agentes · Ciberseguridad
 
 **Live:** https://andres2017.github.io/Cv2026andres/
 
 ---
 
-## Qué incluye (versión actualizada)
+## Posicionamiento
 
-- Diseño terminal / cyber con soporte ES / EN
-- Secciones: Hero, About, Skills, Experience, **Projects**, Education, **Descargar CV**, Contact
-- Botón WhatsApp funcional
-- Contacto con fallback a mailto + opción Formspree
-- MatrixRain desactivado en móvil (mejor rendimiento)
-- SEO básico (meta + Open Graph)
+Portfolio + landing de servicios para empresas y negocios:
+
+1. **Capacitación en Claude** para equipos
+2. **Creación de Skills** a medida
+3. **Agentes de IA** para la empresa
+4. **IA segura** + ciberseguridad
+5. Consultoría de adopción de IA
+6. Mentoría y talleres
+
+También se mantiene el perfil profesional (9+ años en INPEC, ciberseguridad, sistemas) para oportunidades laborales remotas.
 
 ---
 
-## Cómo desplegar los cambios
+## Deploy
 
 ```bash
 cd frontend
 yarn install   # o npm install
 yarn build
-yarn deploy    # usa gh-pages
-```
-
-O desde la raíz del frontend:
-
-```bash
-npm run predeploy && npm run deploy
+yarn deploy
 ```
 
 ---
 
-## Pasos que debes hacer tú (2 minutos)
+## Pasos manuales
 
-### 1. Subir tu CV real
-Coloca el archivo PDF en:
-
-```
-frontend/public/cv-andres-vargas.pdf
-```
-
-Luego vuelve a hacer `yarn build` + `yarn deploy`.
-
-### 2. (Opcional) Formulario de contacto real con Formspree
-1. Entra a https://formspree.io y crea cuenta gratis
-2. Crea un form y copia el ID (ej: `xzbkqjyw`)
-3. En `frontend/src/components/sections/ContactSection.jsx` cambia:
-
-```js
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/TU_ID_AQUI';
-```
-
-Mientras no lo hagas, el formulario abre tu cliente de correo (mailto) como respaldo.
-
-### 3. Verificar email
-En `mock.js` el email de contacto está como `andresvargasrobles@gmail.com`.  
-Cámbialo si usas otro.
+1. **CV PDF** → coloca el archivo en `frontend/public/cv-andres-vargas.pdf`
+2. **Formspree** (opcional) → en `ContactSection.jsx` reemplaza `YOUR_FORM_ID`
+3. Verifica el email en `mock.js` si usas otro
 
 ---
 
-## Stack
-
-- React 19 + Craco + Tailwind
-- Radix / shadcn-style components
-- HashRouter (compatible con GitHub Pages)
-- gh-pages para deploy
-
----
-
-Hecho para el mercado colombiano y trabajo remoto.
+Hecho para empresas colombianas y trabajo remoto.

@@ -4,6 +4,7 @@ import Footer from '../components/layout/Footer';
 import WhatsAppButton from '../components/layout/WhatsAppButton';
 import MatrixRain from '../components/effects/MatrixRain';
 import HeroSection from '../components/sections/HeroSection';
+import ServicesSection from '../components/sections/ServicesSection';
 import AboutSection from '../components/sections/AboutSection';
 import SkillsSection from '../components/sections/SkillsSection';
 import ExperienceSection from '../components/sections/ExperienceSection';
@@ -19,10 +20,11 @@ const HomePage = () => {
       <Navbar />
       <main className="relative z-10">
         <HeroSection />
+        <ServicesSection />
         <AboutSection />
         <SkillsSection />
-        <ExperienceSection />
         <ProjectsSection />
+        <ExperienceSection />
         <EducationSection />
         <CVUploadSection />
         <ContactSection />

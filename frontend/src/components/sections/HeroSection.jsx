@@ -3,7 +3,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import portfolioData from '../../data/mock';
 import useTypingEffect from '../../hooks/useTypingEffect';
 import { Button } from '../ui/button';
-import { ChevronDown, Terminal, Lock } from 'lucide-react';
+import { ChevronDown, Terminal, Lock, Sparkles } from 'lucide-react';
 
 const HeroContent = ({ data }) => {
   const { displayedLines, isComplete } = useTypingEffect(data.terminalLines, 35, 500);
@@ -11,9 +11,20 @@ const HeroContent = ({ data }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
       <div className="max-w-4xl w-full">
+        {/* Agency badge */}
+        <div
+          className={`flex justify-center mb-6 transition-opacity duration-700 ${
+            isComplete ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00ff41]/30 bg-[#00ff41]/5 font-mono text-xs text-[#00ff41]">
+            <Sparkles className="w-3.5 h-3.5" />
+            AVR · AI Agency
+          </div>
+        </div>
+
         {/* Terminal Window */}
         <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg border border-[#1e2a3a] shadow-2xl shadow-[#00ff41]/5 overflow-hidden">
-          {/* Terminal Header */}
           <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-[#1e2a3a]">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
@@ -22,12 +33,11 @@ const HeroContent = ({ data }) => {
             </div>
             <div className="flex-1 text-center font-mono text-xs text-[#8b949e] flex items-center justify-center gap-1">
               <Terminal className="w-3 h-3" />
-              andres@cybersec:~
+              andres@avr-ai:~
             </div>
             <Lock className="w-3 h-3 text-[#00ff41]" />
           </div>
 
-          {/* Terminal Body */}
           <div className="p-4 sm:p-6 font-mono text-sm min-h-[220px] sm:min-h-[260px]">
             {displayedLines.map((line, i) => (
               <div key={i} className="mb-3">
@@ -55,7 +65,6 @@ const HeroContent = ({ data }) => {
           </div>
         </div>
 
-        {/* Subtitle & CTA */}
         <div
           className={`mt-8 text-center transition-opacity duration-700 ${
             isComplete ? 'opacity-100' : 'opacity-0'
@@ -68,15 +77,23 @@ const HeroContent = ({ data }) => {
           <p className="text-xs sm:text-sm text-[#8b949e] max-w-2xl mx-auto mb-8 font-mono leading-relaxed">
             {data.subtitle}
           </p>
-          <Button
-            onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-transparent border border-[#00ff41]/50 text-[#00ff41] hover:bg-[#00ff41]/10 font-mono px-8 py-3 rounded transition-colors duration-300 hover:shadow-[0_0_20px_rgba(0,255,65,0.15)]"
-          >
-            {data.cta}
-          </Button>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Button
+              onClick={() => document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#00ff41]/10 border border-[#00ff41]/50 text-[#00ff41] hover:bg-[#00ff41]/20 font-mono px-8 py-3 rounded transition-colors duration-300 hover:shadow-[0_0_20px_rgba(0,255,65,0.2)]"
+            >
+              {data.cta}
+            </Button>
+            <Button
+              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+              variant="outline"
+              className="bg-transparent border border-[#1e2a3a] text-[#c9d1d9] hover:border-[#00ff41]/40 hover:text-[#00ff41] font-mono px-8 py-3 rounded transition-colors"
+            >
+              {data.cta.includes('Servicios') || data.cta.includes('Services') ? (data.cta.includes('Servicios') ? 'Contactar' : 'Contact') : 'Contact'}
+            </Button>
+          </div>
         </div>
 
-        {/* Scroll indicator */}
         <div
           className={`mt-12 text-center transition-opacity duration-700 ${
             isComplete ? 'opacity-100' : 'opacity-0'

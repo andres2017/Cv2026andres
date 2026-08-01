@@ -4,9 +4,9 @@ import portfolioData from '../../data/mock';
 import useScrollReveal from '../../hooks/useScrollReveal';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
-import { Shield, Code, Link, Server } from 'lucide-react';
+import { Shield, Code, Link, Server, Sparkles } from 'lucide-react';
 
-const iconMap = { Shield, Code, Link, Server };
+const iconMap = { Shield, Code, Link, Server, Sparkles };
 
 const SkillsSection = () => {
   const { language } = useLanguage();
@@ -17,7 +17,6 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="relative z-10 py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0d1117]/30">
       <div ref={ref} className="max-w-6xl mx-auto">
-        {/* Header */}
         <div
           className={`mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -28,7 +27,6 @@ const SkillsSection = () => {
           <div className="w-20 h-[2px] bg-gradient-to-r from-[#00ff41] to-transparent mt-4" />
         </div>
 
-        {/* Category Tabs */}
         <div
           className={`flex flex-wrap gap-2 sm:gap-3 mb-8 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -54,7 +52,6 @@ const SkillsSection = () => {
           })}
         </div>
 
-        {/* Skills Grid */}
         <Card
           className={`bg-[#0d1117]/60 border-[#1e2a3a] p-5 sm:p-6 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
