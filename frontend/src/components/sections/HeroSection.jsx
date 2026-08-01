@@ -5,13 +5,13 @@ import useTypingEffect from '../../hooks/useTypingEffect';
 import { Button } from '../ui/button';
 import { ChevronDown, Terminal, Lock, Sparkles } from 'lucide-react';
 
-const HeroContent = ({ data }) => {
+const HeroContent = ({ data, language }) => {
   const { displayedLines, isComplete } = useTypingEffect(data.terminalLines, 35, 500);
+  const contactLabel = language === 'es' ? 'Contactar' : 'Contact';
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
       <div className="max-w-4xl w-full">
-        {/* Agency badge */}
         <div
           className={`flex justify-center mb-6 transition-opacity duration-700 ${
             isComplete ? 'opacity-100' : 'opacity-0'
@@ -23,7 +23,6 @@ const HeroContent = ({ data }) => {
           </div>
         </div>
 
-        {/* Terminal Window */}
         <div className="bg-[#0d1117]/80 backdrop-blur-sm rounded-lg border border-[#1e2a3a] shadow-2xl shadow-[#00ff41]/5 overflow-hidden">
           <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-[#1e2a3a]">
             <div className="flex gap-2">
@@ -89,7 +88,7 @@ const HeroContent = ({ data }) => {
               variant="outline"
               className="bg-transparent border border-[#1e2a3a] text-[#c9d1d9] hover:border-[#00ff41]/40 hover:text-[#00ff41] font-mono px-8 py-3 rounded transition-colors"
             >
-              {data.cta.includes('Servicios') || data.cta.includes('Services') ? (data.cta.includes('Servicios') ? 'Contactar' : 'Contact') : 'Contact'}
+              {contactLabel}
             </Button>
           </div>
         </div>
@@ -114,7 +113,7 @@ const HeroSection = () => {
   const { language } = useLanguage();
   const data = portfolioData[language].hero;
 
-  return <HeroContent key={language} data={data} />;
+  return <HeroContent key={language} data={data} language={language} />;
 };
 
 export default HeroSection;
